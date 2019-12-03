@@ -22,21 +22,21 @@ event.on('DB data prepared', function() {
         var $ = cheerio.load(arr[0]);
         var result=[];
         //console.log(priMap);
-        for(var j = 1;j < 7;j++){//每一个省份都有六年的数据，并且六个表的其实selector是从1开始的，所以循环六次
-            $('.fsshowli').each((i, v)=>{//第二层循环 遍历每一个省份的六个表，并获得其中一个省份的表                
+        for(var j = 1;j < 7;j++){//
+            $('.fsshowli').each((i, v)=>{//Each province has six years of data, and the selector for the six tables actually starts at one, so we loop six times                
                 try{  
                     var provinceID = utility.getProvinceId($(v).find('.city').text(), provinceMap);  
                 }catch (error){
                     console.error('The format of privince is not expected');
                 }
                 var year = utility.getYear($,j);
-                var trs = $(v).find('div.tline > div:nth-child('+j+')>table .tr-cont')//得到六个表中其中一个的所有tr
+                var trs = $(v).find('div.tline > div:nth-child('+j+')>table .tr-cont')//You get all TRS for one of the six tables
                 var level;
-                trs.each((ii, vv)=>{  //第三层循环遍历（除了表头）tr(每一行)                    
-                    $(vv).find('td').each((iii, vvv)=>{ //第四层循环遍历一行中的每一个td
-                        //过滤所有的无用数据
+                trs.each((ii, vv)=>{  //Layer 3 loop through (except header) tr(each line)                   
+                    $(vv).find('td').each((iii, vvv)=>{ //The fourth layer loops through each td in a row
+                        //Filter all the useless data
                         tdsValue = $(vvv).text();                
-                        if(iii==0){//如果索引为0则值为批次存进变量level中
+                        if(iii==0){//If the index is 0, the value is stored in the variable level for the batch
                             level = levelMap[tdsValue];    
                         }
                         if(iii>0){
@@ -47,7 +47,7 @@ event.on('DB data prepared', function() {
 
             });  
         }
-         console.log(result);//获得所有的数据（一个二维数组）
+         console.log(result);//Get all the data (a two-dimensional array)
     });
     
 }); 

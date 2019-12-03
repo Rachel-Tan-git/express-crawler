@@ -10,29 +10,11 @@ test('get province ammount', () => {
     var len2 = $('div.fsshow.clearfix > .fsshowli').length;
     expect(len1 == len2).toEqual(true);
 });
-//step1: get province dom
-test('get province dom', () => {
-    var getProvSelectorStr = '';
-    var len1 = $(getProvSelectorStr).length;
-    expect(len1 > 0).toEqual(true);
-});
 
-//step1: get province amount
-test('get province amount', () => {
-    var getProvAmountSelectorStr = '';
-    var len1 = $(getProvAmountSelectorStr).length;
-    expect(len1 > 0).toEqual(true);
-});
 
-//step2: getPriID(v), input: v = <div class="fsshowli" id="bj">...</div>, output: proID
-//Test case: getPriID(v), input: <div class="fsshowli" id="bj">...</div>, output: 3
-test('get province id', () => {
-    var v = '';
-    var map = {};
-    var name = getPriId(v, map);
-    expect(name).toEqual(3);
-});
-//Test case: getPriID(v), input: <div class="fsshowli" id="nmg">...</div>, output: 20
+//step2: getProvinceId(v), input: v = <div class="fsshowli" id="bj">...</div>, output: proID
+//Test case: getProvinceId(v), input: <div class="fsshowli" id="bj">...</div>, output: 3
+//Test case: getProvinceId(v), input: <div class="fsshowli" id="nmg">...</div>, output: 20
 
 //step2: getYear(j), input: j=1, output: year=2019
 //Test case: getYear(j), input: 2, output: 2018
