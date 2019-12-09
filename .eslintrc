@@ -25,9 +25,6 @@
     "import/no-dynamic-require": "off",
     "quotes": [1, "single"],
     "semi": [2, "always", {"omitLastInOneLineBlock": true}]
-<<<<<<< HEAD
-  } 
-=======
   },
   "settings": {
     "import/resolver": {
@@ -36,5 +33,4 @@
       }
     }
   }
->>>>>>> 10be82ef1dd2e3dfa7f1b47f4673f532201d2ce5
 }

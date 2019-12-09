@@ -1,11 +1,7 @@
 const mysql = require('mysql');
-<<<<<<< HEAD
-const dbConfig = require('../db_config.js');
-=======
 const myPath = require('path').resolve(__dirname, '..', 'db_config.js');
 
 const dbConfig = require(myPath);
->>>>>>> 10be82ef1dd2e3dfa7f1b47f4673f532201d2ce5
 
 class DatabaseUtility {
   constructor() {
