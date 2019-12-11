@@ -1,6 +1,8 @@
 const cheerio = require('cheerio');
 const data = require('../testdata.js');
+const queryOrder = require('../utility/http');
 
+const host = 'http://kaoshi.edu.sina.com.cn/college/scorelist?tab=file&wl=&local=1&syear=';
 const $ = cheerio.load(data);
 test('get the main table', () => {
   const len = $('div.fsshow.clearfix').length;
@@ -18,6 +20,14 @@ test('get year div', () => {
 test('get score div', () => {
   const score = $('#bj>div.tline > div:nth-child(1)>table>tbody>tr:nth-child(2)>td:nth-child(2)').text();
   expect(score === '480').toEqual(true);
+});
+
+test('get page number', () => {
+  queryOrder(host).then((data) => {
+    const $$ = cheerio.load(data[0]);
+    const page = $$('#score > div.tabsContainer > div > span').text();
+    expect(page == '3125 条记录 1/157页');
+  });
 });
 // step2: getProvinceId(v), input: v = <div class="fsshowli" id="bj">...</div>, output: proID
 // Test case: getProvinceId(v), input: <div class="fsshowli" id="bj">...</div>, output: 3

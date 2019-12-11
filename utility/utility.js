@@ -9,6 +9,12 @@ class Utility {
     return yearCount;
   }
 
+  static getPageNumber($) {
+    const pageNumber = $('#score > div.tabsContainer > div > span').text();
+    const arr = pageNumber.split('/');
+    return parseInt(arr[1], 10);
+  }
+
   // get the province ID
   static getProvinceId(provinceName, map) {
     const cityValue = /市/;
